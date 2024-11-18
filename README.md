@@ -18,4 +18,4 @@
 }
 ```
 
-assumes `curl` is present in the operation system.
+based on [stunnel/static-curl](https://github.com/stunnel/static-curl)
