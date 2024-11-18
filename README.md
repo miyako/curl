@@ -18,4 +18,48 @@
 }
 ```
 
-assumes `curl` is present in the operation system.
+based on [stunnel/static-curl](https://github.com/stunnel/static-curl)
+
+## Usage - with UI
+
+```4d
+#DECLARE($params : Object)
+
+If (Count parameters=0)
+	
+	CALL WORKER(1; Current method name; {})
+	
+Else 
+	
+	$form:=cs._curlForm.new()
+	
+End if 
+```
+
+
+## Usage - without UI
+
+```4d
+#DECLARE($params : Object)
+
+If ($params=Null)
+	
+	/*
+		async calls must be performed in a worker or form
+	*/
+	
+	CALL WORKER(1; Current method name; {})
+	
+Else 
+	
+	var $curl : cs.curl
+	$curl:=cs.curl.new(cs._curl_Controller)
+	
+	$URL:="https://resources-download.4d.com/release/20.x/20.5/latest/mac/tool4d_arm64.tar.xz"
+	
+	$out:=Folder(fk desktop folder).file("tool4d_arm64.tar.xz")
+	
+	$curl.perform([$URL; "-o"; $out; "-L"; "-#"])  //L:follow redirection
+	
+End if
+```
