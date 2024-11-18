@@ -10,7 +10,7 @@
  ```json
 {
 	"dependencies": {
-		"ffmpeg": {
+		"curl": {
 			"github": "miyako/curl",
 			"version": "*"
 		}
