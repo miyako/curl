@@ -4,12 +4,6 @@ Class constructor($controller : 4D:C1709.Class; $ini : 4D:C1709.File)
 	
 	Super:C1705("curl"; $controller)
 	
-	If (OB Instance of:C1731($ini; 4D:C1709.File))
-		If ($ini.exists)
-			This:C1470.ini:=This:C1470.expand($ini).path
-		End if 
-	End if 
-	
 Function get worker() : 4D:C1709.SystemWorker
 	
 	return This:C1470._controller.worker
