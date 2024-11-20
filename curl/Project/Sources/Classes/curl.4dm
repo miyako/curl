@@ -1,6 +1,6 @@
 Class extends _CLI
 
-Class constructor($controller : 4D:C1709.Class; $ini : 4D:C1709.File)
+Class constructor($controller : 4D:C1709.Class)
 	
 	Super:C1705("curl"; $controller)
 	
