@@ -19,7 +19,7 @@ Function version() : Collection
 	
 	This:C1470.controller.execute($command)
 	
-	return Split string:C1554(This:C1470.worker.wait().response; "\n"; ck ignore null or empty:K85:5)
+	return Split string:C1554(This:C1470.worker.wait().response; This:C1470.EOL; ck ignore null or empty:K85:5)
 	
 Function perform($options : Collection) : cs:C1710.curl
 	
