@@ -18,6 +18,6 @@ Else
 	
 	$out:=Folder:C1567(fk desktop folder:K87:19).file("tool4d_arm64.tar.xz")
 	
-	$curl.perform([$URL; "-o"; $out; "-L"; "-#"])  //L:follow redirection
+	$curl.perform([$URL; "-o"; $out; "-L"; "-#"; "-k"])  //L:follow redirection
 	
 End if 

@@ -3,6 +3,11 @@
 [![license](https://img.shields.io/github/license/miyako/curl)](LICENSE)
 ![downloads](https://img.shields.io/github/downloads/miyako/curl/total)
 
+### Licensing
+
+* the source code of this component is licensed under the [MIT license](https://github.com/miyako/curl/blob/master/LICENSE).
+* see [curl.se](https://curl.se/docs/copyright.html) for the licensing of **curl**.
+ 
 # curl
 
 ## dependencies.json
@@ -19,6 +24,8 @@
 ```
 
 based on [stunnel/static-curl](https://github.com/stunnel/static-curl)
+
+**note for Windows 11**: unlike the `curl` that comes with Windows 11, this edition uses OpenSSL. some servers may require the `-k` option unless local certficates are properly configured (search "curl error 60").
 
 ## Usage - with UI
 

@@ -6,6 +6,6 @@ If (FORM Event:C1606.code=On Clicked:K2:4)
 	
 	$out:=Folder:C1567(fk desktop folder:K87:19).file("tool4d_arm64.tar.xz")
 	
-	Form:C1466.curl.perform([$URL; "-o"; $out; "-L"; "-#"])  //L:follow redirection
+	Form:C1466.curl.perform([$URL; "-o"; $out; "-L"; "-#"; "-k"])  //L:follow redirection
 	
 End if 
