@@ -33,6 +33,10 @@ Function perform($options : Collection) : cs:C1710.curl
 	For each ($option; $options)
 		
 		Case of 
+			: (Value type:C1509($option)=Is collection:K8:32)
+				
+				This:C1470.perform($option)
+				
 			: (Value type:C1509($option)=Is object:K8:27)
 				Case of 
 					: (OB Instance of:C1731($option; 4D:C1709.File)) || (OB Instance of:C1731($option; 4D:C1709.Folder))
