@@ -8,6 +8,10 @@ Function get worker() : 4D:C1709.SystemWorker
 	
 	return This:C1470._controller.worker
 	
+Function get controller()->$controller : cs:C1710._curl_Controller
+	
+	$controller:=This:C1470._controller
+	
 Function terminate()
 	
 	This:C1470.controller.terminate()
