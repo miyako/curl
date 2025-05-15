@@ -11,7 +11,7 @@
   "tool": {
     "platform": "macos",
     "branch": "20.x",
-    "version": "20.5",
+    "version": "20.6",
     "build": "latest",
     "arch": "arm"
   }
