@@ -9,14 +9,14 @@ layout: default
 
 ### Licensing
 
-* the source code of this component is licensed under the [MIT license](https://github.com/miyako/curl/blob/master/LICENSE).
-* see [curl.se](https://curl.se/docs/copyright.html) for the licensing of **curl**.
+* The source code of this component is licensed under the [MIT license](https://github.com/miyako/curl/blob/master/LICENSE).
+* See [curl.se](https://curl.se/docs/copyright.html) for the licensing of **curl**.
  
 # Use curl from 4D
 
 based on [stunnel/static-curl](https://github.com/stunnel/static-curl)
 
-**note for Windows 11**: unlike the `curl` that comes with Windows 11, this edition uses OpenSSL. some servers may require the `-k` option unless local certficates are properly configured (search "curl error 60").
+**Note for Windows 11**: unlike the `curl` that comes with Windows 11, this edition uses OpenSSL. some servers may require the `-k` option unless local certficates are properly configured (search "curl error 60").
 
 ## Usage
 
