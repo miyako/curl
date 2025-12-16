@@ -7,7 +7,7 @@ highlighter: rouge
 plugins_dir: _plugins
 baseurl: /curl
 
-title: "llama.cpp"
+title: "curl"
 description: "Use curl from 4D"
 logo: "/assets/logo.png"   # optional
 show_downloads: true       # controls the download links in header
