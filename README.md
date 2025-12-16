@@ -17,7 +17,7 @@
 	"dependencies": {
 		"curl": {
 			"github": "miyako/curl",
-			"version": "*"
+			"version": "latest"
 		}
 	}
 }
