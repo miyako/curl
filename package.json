@@ -7,7 +7,7 @@
   ],
   "license": "MIT",
   "repository": "https://github.com/miyako/curl",
-  "version": "20.0.17",
+  "version": "20.1.0",
   "tool": {
     "platform": "macos",
     "branch": "20.x",
