@@ -24,7 +24,7 @@ based on [stunnel/static-curl](https://github.com/stunnel/static-curl)
 
 ```4d
 var $version : Object
-$version:=cs.curl.new().version()
+$version:=cs.curl.curl.new().version()
 ```
 
 ### Basic Download
