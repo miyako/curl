@@ -3,10 +3,6 @@
 
 If ($params=Null:C1517)
 	
-/*
-async calls must be performed in a worker or form
-*/
-	
 	CALL WORKER:C1389(1; Current method name:C684; {})
 	
 Else 
@@ -17,8 +13,11 @@ Else
 	$URL:="https://resources-download.4d.com/release/20.x/20.5/latest/mac/tool4d_arm64.tar.xz"
 	$out:=Folder:C1567(fk desktop folder:K87:19).file("tool4d_arm64.tar.xz")
 	
-	$onResponse:=Formula:C1597(onResponse)
-	$onData:=Formula:C1597(onData)
+	$events:={}
+	$events.onResponse:=Formula:C1597(ALERT:C41([$2.context.fullName; "downloaded!"].join(" ")))
+	$events.onData:=Formula:C1597(MESSAGE:C88([$2.context.fullName; $2.percentage; "%"].join(" ")))
+	$events.onTerminate:=Formula:C1597(ALERT:C41("terminated!"))
+	$events.onError:=Formula:C1597(ALERT:C41("error!"))
 	
 	$tasks:=[]
 /*
@@ -29,6 +28,6 @@ context object can have 2 properties: .data, .file
 it can be 4D.File, 4D.Blob, Blob, or Text
 */
 	$tasks.push([$URL; "-o"; $out; "-L"; "-k"; {data: $out; file: Null:C1517}])
-	$results:=$curl.execute($tasks; $onResponse; $onData)
+	$results:=$curl.execute($tasks; $events)
 	
 End if 

@@ -20,19 +20,14 @@ Function onData($worker : 4D:C1709.SystemWorker; $params : Object)
 	
 	This:C1470.stdOut+=$params.data
 	
-	var $instance : cs:C1710.curl
-	$instance:=This:C1470.instance
-	
-	If (OB Instance of:C1731($instance.onData; 4D:C1709.Function))
-		$instance.onData.call($worker; $params)
-	End if 
-	
 Function onDataError($worker : 4D:C1709.SystemWorker; $params : Object)
 	
 	var $instance : cs:C1710.curl
 	$instance:=This:C1470.instance
 	
 	If ($instance.onData#Null:C1517) && (OB Instance of:C1731($instance.onData; 4D:C1709.Function))
+		
+		This:C1470.stdErr+=$params.data
 		
 		var $stdErr : Text
 		$stdErr:=This:C1470.stdErr
@@ -46,6 +41,7 @@ Function onDataError($worker : 4D:C1709.SystemWorker; $params : Object)
 			$i:=$pos{0}+$len{0}
 			$context:={}
 			$context.percentage:=$percentage
+			$context.context:=This:C1470.SYSTEM_WORKER_CONTEXT[String:C10($worker.pid)]
 			$instance.onData.call(This:C1470; $worker; $context)
 		End while 
 		This:C1470.stdErr:=Substring:C12($stdErr; $i)
@@ -62,5 +58,18 @@ Function onResponse($worker : 4D:C1709.SystemWorker; $params : Object)
 	
 Function onError($worker : 4D:C1709.SystemWorker; $params : Object)
 	
+	var $instance : cs:C1710.curl
+	$instance:=This:C1470.instance
+	
+	If (OB Instance of:C1731($instance.onError; 4D:C1709.Function))
+		$instance.onError.call($worker; $params)
+	End if 
+	
 Function onTerminate($worker : 4D:C1709.SystemWorker; $params : Object)
 	
+	var $instance : cs:C1710.curl
+	$instance:=This:C1470.instance
+	
+	If (OB Instance of:C1731($instance.onTerminate; 4D:C1709.Function))
+		$instance.onTerminate.call($worker; $params)
+	End if 

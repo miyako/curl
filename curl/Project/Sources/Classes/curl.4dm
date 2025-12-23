@@ -1,5 +1,7 @@
 property onData : 4D:C1709.Function
 property onResponse : 4D:C1709.Function
+property onError : 4D:C1709.Function
+property onTerminate : 4D:C1709.Function
 
 Class extends _CLI
 
@@ -72,7 +74,9 @@ Function version() : Object
 	
 	return $version
 	
-Function execute($option : Variant; $onResponse : 4D:C1709.Function; $onData : 4D:C1709.Function) : Collection
+Function execute($option : Variant; $events : Object) : Collection
+	
+	var $onResponse; $onData; $onTerminate; $onError : 4D:C1709.Function
 	
 	var $stdOut; $isStream; $isAsync : Boolean
 	var $options : Collection
@@ -91,14 +95,27 @@ Function execute($option : Variant; $onResponse : 4D:C1709.Function; $onData : 4
 	var $commands : Collection
 	$commands:=[]
 	
-	If (OB Instance of:C1731($onResponse; 4D:C1709.Function))
-		$isAsync:=True:C214
-		This:C1470.onResponse:=$onResponse
-	End if 
-	
-	If (OB Instance of:C1731($onData; 4D:C1709.Function))
-		$isAsync:=True:C214
-		This:C1470.onData:=$onData
+	If ($events#Null:C1517)
+		If (OB Instance of:C1731($events.onResponse; 4D:C1709.Function))
+			$isAsync:=True:C214
+			This:C1470.onResponse:=$events.onResponse
+			This:C1470.controller.onResponse:=$events.onResponse
+			If ($events.onData#Null:C1517)\
+				 && (Value type:C1509($events.onData)=Is object:K8:27)\
+				 && (OB Instance of:C1731($events.onData; 4D:C1709.Function))
+				This:C1470.onData:=$events.onData
+			End if 
+			If ($events.onError#Null:C1517)\
+				 && (Value type:C1509($events.onError)=Is object:K8:27)\
+				 && (OB Instance of:C1731($events.onError; 4D:C1709.Function))
+				This:C1470.onError:=$events.onError
+			End if 
+			If ($events.onTerminate#Null:C1517)\
+				 && (Value type:C1509($events.onTerminate)=Is object:K8:27)\
+				 && (OB Instance of:C1731($events.onTerminate; 4D:C1709.Function))
+				This:C1470.onTerminate:=$events.onTerminate
+			End if 
+		End if 
 	End if 
 	
 	For each ($option; $options)
@@ -108,6 +125,10 @@ Function execute($option : Variant; $onResponse : 4D:C1709.Function; $onData : 4
 		End if 
 		
 		$command:=This:C1470.escape(This:C1470.executablePath)
+		
+		If ($isAsync)
+			$command+=" -# "
+		End if 
 		
 		$stdOut:=True:C214
 		

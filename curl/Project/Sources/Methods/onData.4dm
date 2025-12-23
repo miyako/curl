@@ -4,3 +4,4 @@
 var $text : Text
 $text:=$worker.response
 $file:=$params.context
+
