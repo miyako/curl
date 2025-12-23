@@ -1,3 +1,8 @@
+property _EOL; _name; _platform; _executableName; _executablePath : Text
+property _executableFile : 4D:C1709.File
+property _currentDirectory : 4D:C1709.Folder
+property _controller : cs:C1710._CLI_Controller
+
 Class constructor($executableName : Text; $controller : 4D:C1709.Class)
 	
 	This:C1470._name:=OB Class:C1730(This:C1470).name

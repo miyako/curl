@@ -20,27 +20,26 @@ based on [stunnel/static-curl](https://github.com/stunnel/static-curl)
 
 ## Usage
 
-```4d
-#DECLARE($params : Object)
+#### Get Version
 
-If ($params=Null)
-    
-    /*
-        async calls must be performed in a worker or form
-    */
-    
-    CALL WORKER(1; Current method name; {})
-    
-Else 
-    
-    var $curl : cs.curl.curl
-    $curl:=cs.curl.curl.new(cs._curl_Controller)
-    
-    $URL:="https://resources-download.4d.com/release/20.x/20.5/latest/mac/tool4d_arm64.tar.xz"
-    
-    $out:=Folder(fk desktop folder).file("tool4d_arm64.tar.xz")
-    
-    $curl.perform([$URL; "-o"; $out; "-L"; "-#"])  //L:follow redirection
-    
-End if
+```4d
+var $version : Object
+$version:=cs.curl.new().version()
+```
+
+there are 2 ways to invoke `.execute()`; synchronous and asynchronous.
+
+**synchronous**: pass a single parameter and receive a collection of results in return.
+
+you can pass a single object or a collection of objects in a single call.
+
+**asynchronous**: pass a second formula parameter. an empty collection is returned at this point.
+
+the formula should have the following signature:
+
+```4d
+#DECLARE($worker : 4D.SystemWorker; $params : Object)
+
+var $text : Text
+$text:=$worker.response
 ```
