@@ -182,8 +182,6 @@ Function execute($option : Variant; $events : Object) : Collection
 			End case 
 		End for each 
 		
-		SET TEXT TO PASTEBOARD:C523($command)
-		
 		var $worker : 4D:C1709.SystemWorker
 		$worker:=This:C1470.controller.execute($command; $isStream ? $file : Null:C1517; $data).worker
 		
