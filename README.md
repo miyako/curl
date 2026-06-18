@@ -4,7 +4,7 @@
 
 ## Usage
 
-#### Get Version
+### Get Version
 
 ```4d
 var $version : Object
