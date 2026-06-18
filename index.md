@@ -20,7 +20,7 @@ based on [stunnel/static-curl](https://github.com/stunnel/static-curl)
 
 ## Usage
 
-#### Get Version
+### Get Version
 
 ```4d
 var $version : Object
