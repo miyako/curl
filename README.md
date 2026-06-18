@@ -2,16 +2,18 @@
 
 **aknowledgements**: [stunnel/static-curl](https://github.com/stunnel/static-curl)
 
-## Usage
+[stunnel/static-curl](https://github.com/stunnel/static-curl) is a static redistributable build of the popular curl CLI program. This component provides a wrapper class for calling it via SystemWorker.
 
-### Get Version
+#### Usage
+
+To get version information:
 
 ```4d
 var $version : Object
 $version:=cs.curl.curl.new().version()
 ```
 
-### Basic Download
+To perform basic download with no progress callback:
 
 ```4d
 #DECLARE($params : Object)
